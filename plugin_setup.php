@@ -4,12 +4,12 @@
 include_once "/opt/fpp/www/common.php";
 #include_once "functions.inc.php";
 include_once 'commonFunctions.inc.php';
-$pluginName = "ControllerMonitor";
+$pluginName = "ControllerCheck";
 
 //$DEBUG=true;
 $myPid = getmypid();
 
-$gitURL = "https://github.com/jaredb7/FPP-Controller-Monitor.git";
+$gitURL = "https://github.com/jaredb7/FPP-Controller-Check.git";
 
 
 $pluginUpdateFile = $settings['pluginDirectory'] . "/" . $pluginName . "/" . "pluginUpdate.inc";
@@ -44,7 +44,7 @@ $ENABLED = $pluginSettings['ENABLED'];
 
 //Set a default value
 if (trim($CNTRL_LOG_FILE) == "") {
-    $CNTRL_LOG_FILE = "/tmp/FPP.ControllerMonitor.log";
+    $CNTRL_LOG_FILE = "/tmp/FPP.ControllerCheck.log";
 }
 
 ?>
@@ -53,9 +53,9 @@ if (trim($CNTRL_LOG_FILE) == "") {
 <head>
 </head>
 
-<div id="ControllerMonitor" class="settings">
+<div id="ControllerCheck" class="settings">
     <fieldset>
-        <legend>ControllerMonitor Support Instructions</legend>
+        <legend>ControllerCheck Support Instructions</legend>
 
         <p>Known Issues:
         <ul>
@@ -71,8 +71,8 @@ if (trim($CNTRL_LOG_FILE) == "") {
         <p>
 
 
-        <p>To report a bug, please file it against the ControllerMonitor plugin project on Git:
-            https://github.com/jaredb7/FPP-Plugin-ControllerMonitor
+        <p>To report a bug, please file it against the ControllerCheck plugin project on Git:
+            https://github.com/jaredb7/FPP-Plugin-ControllerCheck
             <form method="post"
                   action="http://<? echo $_SERVER['SERVER_NAME'] ?>/plugin.php?plugin=<? echo $pluginName; ?>&page=plugin_setup.php">
 
@@ -100,7 +100,7 @@ if (trim($CNTRL_LOG_FILE) == "") {
 
                 echo "<p/> \n";
 
-//                echo "Ping results path and Name (/tmp/FPP.ControllerMonitor.log) : \n";
+//                echo "Ping results path and Name (/tmp/FPP.ControllerCheck.log) : \n";
 //                echo "<input type=\"text\" name=\"CNTRL_LOG_FILE\" size=\"16\" value=\"" . $CNTRL_LOG_FILE . "\"> \n";
 
                 ?>
