@@ -1,7 +1,7 @@
 <?php
 
 $pages = Array(
-	'name' => "ControllerMonitor",
+	'name' => "Controller Check",
 	'type' => "status",
 	'page' => "plugin_setup.php");
 
