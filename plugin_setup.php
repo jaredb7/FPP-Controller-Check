@@ -1,5 +1,6 @@
 <?php
-//$DEBUG=true;conductiononce "/opt/fpp/www/common.php";
+//$DEBUG=true;
+//"/opt/fpp/www/common.php";
 #include_once "functions.inc.php";
 include_once 'commonFunctions.inc.php';
 
@@ -68,13 +69,15 @@ if (file_exists($pluginConfigFile)) {
             <li>This Plugin can be used to ping any number of IP's when your FPP device starts up or can serve as a page
                 to check status manually
             </li>
-            <li>1. Enable Plugin
+            <li><b>1.</b> Enable Plugin
             </li>
-            <li>2. Choose whether IP's should be checked at startup
+            <li><b>2.</b> Choose whether IP's should be checked at startup
             </li>
-            <li>3. Choose whether results should be emailed to you</li>
-            <li>4. Optional: Set a Email subject</li>
-            <li>5. Set list of IP address, seperated by a comma</li>
+            <li><b>3.</b> Choose whether results should be emailed to you</li>
+            <li><b>4.</b> <i>Optional:</i> Set a Email subject</li>
+            <li><b>5.</b> Set list of IP address, separated by a comma</li>
+            <li><b>6.</b> Click 'Save Config'</li>
+
         </ul>
         <p>
 
@@ -108,30 +111,30 @@ if (file_exists($pluginConfigFile)) {
 
             echo "<b>Email Results:</b> \n";
             PrintSettingCheckbox(" Plugin " . $pluginName, "EMAIL_RESULTS", $restart = 0, $reboot = 0, "ON", "OFF", $pluginName, $callbackName = "");
-            echo "<br><small>(use this in conjuction with the above to have results emailed to you)</small>";
+            echo "<br><small>(use this in conjunction with the above to have results emailed to you)</small>";
             ?>
 
             <br>
             <br>
 
-            <b>Email Subject Line:</b>
+            <b>Email Subject:</b>
             <input type="text" size="64" value="<? if ($EMAIL_SUBJECT != "") {
                 echo $EMAIL_SUBJECT;
             } else {
                 echo "Hi Admin, Results of Controller Check @ " . $settings['HostName'];
             } ?>" name="EMAIL_SUBJECT" id="EMAIL_SUBJECT">
             <br>
-            <small>(use this in as the email subject line)</small>
+            <small>(use this to customize the email subject)</small>
 
             <br>
             <br>
 
-            <b>IP Address list:</b>
+            <b>IP Address(s):</b>
             <?
             echo "<input type=\"text\" name=\"CNTRL_LIST\" size=\"64\" value=\"" . implode(", ", $CNTRL_LIST) . "\"> \n";
             ?>
             <br>
-            <small>(comma separated)</small>
+            <small>(comma separated list)</small>
 
             <br>
             <br>
@@ -148,6 +151,7 @@ if (file_exists($pluginConfigFile)) {
         </form>
         <br>
 
+        <h3>Host Status:</h3>
         <table id="tblGpioOutputs" class="channelOutputTable">
             <tr class="tblheader">
                 <td width="5%" align="left">#</td>
