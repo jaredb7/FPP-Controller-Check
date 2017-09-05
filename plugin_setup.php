@@ -82,7 +82,7 @@ if (file_exists($pluginConfigFile)) {
         <p>
 
         <p>To report a bug, please file it against the FPP-Plugin-ControllerCheck plugin project on Git:
-            https://github.com/jaredb7/FPP-Plugin-ControllerCheck </p>
+            <? echo $gitURL ?> </p>
 
         <form method="post"
               action="http://<? echo $_SERVER['SERVER_NAME'] ?>/plugin.php?plugin=<? echo $pluginName; ?>&page=plugin_setup.php">
