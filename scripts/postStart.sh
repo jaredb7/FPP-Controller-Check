@@ -1,4 +1,7 @@
 #!/bin/bash
+#plugin enabled?
+ENABLED=$(grep -i "^ENABLED\s*=.*" /home/fpp/media/config/plugin.FPP-Controller-Check | sed -e "s/.*=\s*//" -e 's/"//g')
+
 #List of host IPS
 CNTRL_LIST=$(grep -i "^CNTRL_LIST\s*=.*" /home/fpp/media/config/plugin.FPP-Controller-Check | sed -e "s/.*=\s*//" -e 's/"//g')
 
@@ -11,12 +14,8 @@ EMAIL_RESULTS=$(grep -i "^EMAIL_RESULTS\s*=.*" /home/fpp/media/config/plugin.FPP
 #custom email subject
 EMAIL_SUBJECT=$(grep -i "^EMAIL_SUBJECT\s*=.*" /home/fpp/media/config/plugin.FPP-Controller-Check | sed -e "s/.*=\s*//" -e 's/"//g')
 
-#while ! ping -c1 $1 &>/dev/null
-#        do echo "Ping Fail - $1 - `date`" >> /tmp/ping_log.log
-#done
-#echo "Host Found  - $1 - `date`" >> /tmp/ping_log.log
-
-if [ "${PING_AT_STARTUP}" == "ON" ]
+#if we should ping at startup and plugin is enabled
+if [ "${PING_AT_STARTUP}" == "ON" ] && [ "${ENABLED}" == "ON" ];
 then
     #start by clearing the tmp log, redirect output so we don't see errors if the file doesn't exist
     sudo rm /tmp/FPP.ControllerMonitor.log &> /dev/null
@@ -39,6 +38,12 @@ then
     #Send email containing the log file
     if [ "${EMAIL_RESULTS}" == "ON" ]
     then
+        #sub in a email subject is one doesn't exist for some reason
+        if [ "${EMAIL_SUBJECT}" == "" ]
+        then
+            EMAIL_SUBJECT="Hi Admin, Results of Controller Check @ $(cat /etc/hostname 2> /dev/null)"
+        fi
+
         mail -s "${EMAIL_SUBJECT}" root@localhost < /tmp/FPP.ControllerMonitor.log
     fi
 fi
