@@ -16,8 +16,9 @@ My Show powers up @ 5PM each day and I hacked together a script to ping my contr
 
 I turned that script into a plugin to make it easier to work with.
 
-Settings Page       
+**Settings Page**       
 ![Alt text](/images/settings_page.png?raw=true "Settings Page")
 
-Emailed Results
-![Alt text](/images/email.png?raw=true "Settings Page")
+**Emailed Results**
+
+![Alt text](/images/email.png?raw=true "Emailed Results")
